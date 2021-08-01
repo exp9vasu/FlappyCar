@@ -45,7 +45,7 @@ public class PlayerController5 : MonoBehaviour
         if (Input.GetMouseButton(0)) 
         { isStarted = true;}
         
-            if (transform.position.z < 250 && isStarted)
+            if (transform.position.z < 230 && isStarted)
             {
                 //rb.AddForce(0,0,20,ForceMode.Acceleration);
                 //rb.velocity = new Vector3(0,0,velocity);
@@ -53,7 +53,7 @@ public class PlayerController5 : MonoBehaviour
                 transform.Translate(-zvelocity * Time.deltaTime, 0, 0);
             }
 
-        if (transform.position.z > 250) 
+        if (transform.position.z > 230) 
         { stopCar(); }
 
         if(transform.position.z>= 48 && transform.position.z <= 54)
@@ -74,14 +74,14 @@ public class PlayerController5 : MonoBehaviour
             TutorPanel.SetActive(false);
         }
 
-        DistanceLeft = 55 - transform.position.z;
+        DistanceLeft = 230 - transform.position.z;
 
-        if (DistanceLeft > 55)
+        if (DistanceLeft > 230)
         {
-            DistanceLeft = 55;
+            DistanceLeft = 230;
         }
 
-        if (transform.position.z > 55)
+        if (transform.position.z > 230)
         {
             DistanceLeft = 0;
         }

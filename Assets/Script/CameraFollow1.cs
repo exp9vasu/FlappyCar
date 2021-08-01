@@ -28,22 +28,22 @@ public class CameraFollow1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z > 250)
+        if (transform.position.z > 230)
         {
             GameManager.instance.levelCleared = true;
         }
 
-        if (VCar.transform.position.z < 250)
+        if (VCar.transform.position.z < 230)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, VCar.transform.position.z + offset.z);
         }
 
         else
         {
-            if (transform.position.z < 55.5)
+            if (transform.position.z < 230.2)
             {
 
-                //transform.RotateAround(new Vector3(0, 0, 55), Vector3.down, 20 * Time.deltaTime);
+                transform.RotateAround(new Vector3(0, 0, 230), Vector3.down, 20 * Time.deltaTime);
             }   
             
             if(VCar.transform.position.z > 55 && VCar.transform.position.z < 65)
