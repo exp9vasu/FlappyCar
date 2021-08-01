@@ -103,6 +103,7 @@ public class PlayerController5 : MonoBehaviour
         {
             cameraFollow1.StartFlying();
             isFlying = true;
+            //cameraFollow1.transform.Translate(2,0,-4);
 
         }
 

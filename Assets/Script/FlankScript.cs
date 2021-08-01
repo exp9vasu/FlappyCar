@@ -30,8 +30,8 @@ public class FlankScript : MonoBehaviour
     public GameObject LFlap;
     public GameObject RFlap;
 
-    private Vector3 RotL;
-    private Vector3 RotR;
+    private Quaternion RotL;
+    private Quaternion RotR;
 
     public Vector3 FlapRotL;
     public Vector3 FlapRotR;
@@ -51,8 +51,11 @@ public class FlankScript : MonoBehaviour
         FlapRotL = LFlap.transform.rotation.eulerAngles;
         FlapRotR = RFlap.transform.rotation.eulerAngles;
 
-        RotL = LCylinder.transform.rotation.eulerAngles;
-        RotR = RCylinder.transform.rotation.eulerAngles;
+        RotL = LCylinder.transform.rotation;
+        RotR = RCylinder.transform.rotation;
+
+        //RotL = LCylinder.transform.rotation.eulerAngles;
+        //RotR = RCylinder.transform.rotation.eulerAngles;
 
         ypos1 = LeftTyre.transform.position.y;
         ypos2 = RightTyre.transform.position.y;
@@ -62,7 +65,14 @@ public class FlankScript : MonoBehaviour
     }
     private void LateUpdate()
     {
-        Debug.Log("isFLying " + playerController5.isFlying);
+        if (RCylinder.transform.rotation.x > RotR.x)
+        {
+            LCylinder.transform.rotation = RotL;
+            RCylinder.transform.rotation = RotR;
+        }
+
+        //Debug.Log("isFLying " + playerController5.isFlying);
+        
         if (!GameManager.instance.GameOver)
         {
             if (!playerController5.isFlying)
@@ -88,6 +98,9 @@ public class FlankScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("LCylinder:"+ LCylinder.transform.rotation.x);
+        //Debug.Log("RCylinder:" + RCylinder.transform.rotation.x);
+
         if (Input.GetKey("v")) 
         {
             Open();
@@ -99,8 +112,8 @@ public class FlankScript : MonoBehaviour
 
         if (Input.GetKey("b"))
         {
-            LCylinder.transform.eulerAngles = RotL;
-            RCylinder.transform.eulerAngles = RotR;
+            //LCylinder.transform.eulerAngles = RotL;
+            //RCylinder.transform.eulerAngles = RotR;
 
             LFlap.transform.eulerAngles = FlapRotL;
             RFlap.transform.eulerAngles = FlapRotR;
@@ -133,7 +146,6 @@ public class FlankScript : MonoBehaviour
     void FixedUpdate()
     {
         
-
     }
     public void Close()
     {
